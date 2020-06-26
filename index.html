@@ -1,0 +1,882 @@
+<!doctype html>
+    <html lang="pt-br">
+
+        <head>
+            <meta charset="utf-8">
+
+            <title>Workshop Git/GitHub</title>
+
+            <meta name="description" content="Apresentação do workshop Git/GitHub">
+            <meta name="author" content="Renato Fogaça">
+            <meta name="keywords" content="minicurso git, minicurso github, git, github, renato fogaça"/>
+
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+            <link rel="stylesheet" href="css/reveal.min.css">
+            <link rel="stylesheet" href="css/theme/custom.css">
+            <link rel="stylesheet" href="lib/css/zenburn.css">
+
+            <script>
+                if( window.location.search.match( /print-pdf/gi ) ) {
+                    var link = document.createElement( 'link' );
+                    link.rel = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = 'css/print/pdf.css';
+                    document.getElementsByTagName( 'head' )[0].appendChild( link );
+                }
+            </script>
+
+            <link rel="icon" href="images/logos/favicon.ico">
+        </head>
+
+        <body>
+
+            <img src="images/logos/Git-Icon.png"
+                style="width: 50px; height: 50px; position: fixed; left: 20px; bottom: 20px;">
+
+            <img id="octocat" src="images/logos/github-icon.png"
+                style="width: 50px; height: 50px; position: fixed; left: 90px; bottom: 20px;">
+
+            <div class="reveal">
+
+                <div class="slides">
+
+                    <section>
+                        <h2><b>Workshop Git/GitHub</b></h2>
+
+                        <img src="images/logos/Git-logo.png"
+                            style="width: 450px; height: 190px; border:none; position: fixed; top: 150px; right: 600px;">
+                        <img src="images/octocat/daftpunktocat-thomas.gif"
+                            style="width: 230px; height: 230px; border:none; position: fixed; top: 110px; left: 390px;">
+                        <img src="images/logos/GitHub-logo.png"
+                            style="width: 450px; height: 190px; border:none; position: fixed; top: 145px; left: 600px;">
+
+                        <br><br><br><br><br><br><br><br>
+                        <h4>
+                            <b>Renato Fogaça</b>
+                        </h4>
+                        <p>
+                            <b>rf@rf.pro.br</b>
+                        </p>
+                        <p><a href="https://github.com/fogaca" target="_blank"><b>github.com/fogaca</b></a></p>
+
+                        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                            <img alt="Licença Creative Commons" style="border-width:0"
+                            src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+                    </section>
+
+                    <section>
+                        <h2>Licença</h2><br/>
+                        <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                            Esta apresentação está licenciada com uma Licença
+                        <br/><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                                Creative Commons - Atribuição 4.0 Internacional</a>.
+                        <br/><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                        <br/><img alt="Licença Creative Commons" style="border-width:0"
+                            src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Agenda</h2>
+                        </section>
+                        <section>
+                            <h3>Ementa do Workshop - Parte 1</h3><br/>
+                                <ul>
+                                    <li class="fragment">Introdução;</li>
+                                    <li class="fragment">Controle de Versão;</li>
+                                    <li class="fragment">História do Git;</li>
+                                    <li class="fragment">O que são o Github, Gitlab e os repósitórios remotos?</li>
+                                    <li class="fragment">Instalando o Git;</li>
+                                    <li class="fragment">Configuração inicial do Git;</li>
+                                </ul>
+                        </section>
+
+                        <section>
+                            <h3>Temas do Workshop - Parte 2</h3><br/>
+                                <ul>
+                                    <li class="fragment">Configuração inicial do Git;</li>
+                                    <li class="fragment">Usando editor do terminal;</li>
+                                    <li class="fragment">O ciclo de vida dos status de seus arquivos;</li>
+                                    <li class="fragment">Visualizando Logs;</li>
+                                    <li class="fragment">Visualizando o diff;</li>
+                                    <li class="fragment">Desfazendo as coisas;</li>
+                                </ul>
+                        </section>
+
+                        <section>
+                            <h3>Ementa do Workshop - Parte 3</h3><br/>
+                                <ul>
+                                    <li class="fragment">Criando um repositório no Github;</li>
+                                    <li class="fragment">Ligando repositório local a um remoto;</li>
+                                    <li class="fragment">Enviando mudanças para um repositório remoto;</li>
+                                    <li class="fragment">Clonando repositórios remotos;</li>
+                                    <li class="fragment">O que é um branch e por que usar?</li>
+                                    <li class="fragment">Criando um branch;</li>
+                                </ul>
+                        </section>
+
+                        <section>
+                            <h3>Ementa do Workshop - Parte 4</h3><br/>
+                                <ul>
+                                    <li class="fragment">Movendo e deletando branches;</li>
+                                    <li class="fragment">Entendendo o Merge;</li>
+                                    <li class="fragment">Entendendo o Rebase;</li>
+                                    <li class="fragment">Merge e Rebase na prática;</li>
+                                    <li class="fragment">Criando o .gitignore;</li>
+                                    <li class="fragment">Git Stash;</li>
+                                </ul>
+                        </section>
+
+                        <section>
+                            <h3>Ementa do Workshop - Parte 5</h3><br/>
+                                <ul>
+                                    <li class="fragment">Versionando com Tags;</li>
+                                    <li class="fragment">Salvando sua sexta com Git Revert;</li>
+                                    <li class="fragment">Extras?</li>
+                                    <li class="fragment">Gh-Pages no Github?</li>
+                                    <li class="fragment">Criar uma página e hospedá-la no Github, com o domínio?</li>
+                                    <li class="fragment">Próximos passos?</li>
+                                </ul>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Apresentações</h2><br/>
+                                <p class="fragment">Nome e idade;</p>
+                                <p class="fragment">Instituição de Ensino;</p>
+                                <p class="fragment">Atividades Desempenhadas;</p>
+                            <br/>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>História</h2>
+                        </section>
+
+                        <section>
+                            <h2>Como surgiu?</h2><br/>
+                            <p class="fragment"><u>Kernel do Linux</u> em 2002, o projeto do começou usar uma DVCS proprietária chamada BitKeeper.</p>
+                            <br/>
+                            <p class="fragment">Em 2005, BitKeeper "quebrou" >> Ferramenta passou a ser <u>PAGA</u>.</p>
+                            <br/>
+                            <p class="fragment">Desenvolver a própria ferramenta baseada em lições aprendidas.</p>
+                            <br/>
+                        </section>
+
+                        <section>
+                            <h2>Metas da Nova Ferramenta</h2><br/>
+                            <p class="fragment">O que essa ferramenta teria que possuir?</p><br/>
+                                <ul>
+                                    <li class="fragment">Velocidade;</li>
+                                    <li class="fragment">Projeto Simples;</li>
+                                    <li class="fragment">Forte suporte para desenvolvimento não-linear;</li>
+                                    <li class="fragment">Completamente distribuído;</li>
+                                    <li class="fragment">Capaz de lidar com projetos grandes como o núcleo o Linux com eficiência (velocidade e tamanho dos dados);</li>
+                                </ul>
+                        </section>
+
+                        <section>
+                            <h2>Motivação</h2><br/>
+                            <p class="fragment">Linus Torvalds estava insatisfeito com o <u>BitKeeper</u>, ferramenta de
+                                controle de versão que ele utilizava para desenvolver o <u>kernel do Linux</u>.</p>
+                            <br/>
+                            <blockquote class="fragment">
+                                &ldquo;The end result was I decided I can write something better
+                                than anything out there in two weeks, and I was right.&rdquo;
+                            </blockquote>
+                            <p class="fragment"><a href="https://www.youtube.com/watch?v=4XpnKHJAok8" target="_blank"><b>Tech Talk: Linus Torvalds on git</b></a></p>
+                        </section>
+
+                        <section>
+                            <h2>Motivação...</h2>
+                            <br/>   
+                            <p class="fragment">Atualmente o kernel Linux é auxiliado exclusivamente pelo Git.</p>
+                            <img src="images/linus_torvalds_github_profile.png" class="fragment"
+                                style="width: 650px; height: 450px; border: 1px solid #000000;">
+                            <p class="fragment"><b><a href="https://github.com/torvalds" target="_blank">github.com/torvalds</b></a></p>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>o que seria um controlador de versão?</h2><br/>
+                            <p class="fragment">Sistema que registra alterações em um arquivo ou conjunto de arquivos ao longo do tempo para que você possa lembrar versões específicas mais tarde</p><br/>
+                        </section>
+
+                        <section>
+                            <h2>Controle Local</h2><br/>
+                            <p class="fragment">Uma das ferramentas VCS mais populares foi um sistema chamado RCS, que ainda é distribuído com muitos computadores hoje.</p><br/>
+                            <img src="images/controle_local_versao.png" class="fragment"
+                                style="width: 650px; height: 450px;">
+                            <p class="fragment"><b><a href="https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Sobre-Controle-de-Vers%C3%A3o" target="_blank">git-scm.com/book/</b></a></p>
+                        </section>
+
+                        <section>
+                            <h2>Controle Centralizado</h2><br/>
+                            <p class="fragment">CVS, Subversion e Perforce, têm um único servidor que contém todos os arquivos de controle de versão.</p><br/>
+                            <img src="images/controle_versao_centralizado.png" class="fragment"
+                                style="width: 650px; height: 450px;">
+                            <p class="fragment"><b><a href="https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Sobre-Controle-de-Vers%C3%A3o" target="_blank">git-scm.com/book/</b></a></p>
+                        </section>
+
+                        <section>
+                            <h2>Controle Distribuído</h2><br/>
+                            <p class="fragment">Duplicam localmente o repositório <u>completo</u>. Se qualquer servidor morrer, qualquer um dos repositórios podem ser copiado.</p><br/>
+                            <img src="images/controle_versao_distribuido.png" class="fragment"
+                                style="width: 550px; height: 450px;">
+                            <p class="fragment"><b><a href="https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Sobre-Controle-de-Vers%C3%A3o" target="_blank">git-scm.com/book/</b></a></p>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Mas por que usar um controle de versão?</h2>
+                            <img src="images/octocat/gangnamtocat.png"
+                                style="width: 50%; height: 50%;">
+                        </section>
+
+                        <section>
+                            <h2>Organizar o desenvolvimento</h2><br/>
+                            <p class="fragment">
+                            Gerenciar manualmente as versões do seu software não será mais
+                            necessário, o Git gerencia de uma forma mais organizada e eficiente.
+                            <br/><br/><img src="images/copy_paste_example.png"
+                                style="width: 729px; height: 107px; border: 1px solid #000000;"></p>
+                        </section>
+
+                        <section>
+                            <h2>Organizar o desenvolvimento...</h2><br/>
+                            <p class="fragment">O Git oferece controle total do projeto ao desenvolvedor, e mais:</p><br/>
+                                <ul>
+                                    <li class="fragment">Visualizar as mudanças ocorridas em cada arquivo;</li>
+                                    <li class="fragment">Visualizar o estado do projeto em etapas anteriores;</li>
+                                    <li class="fragment">Desfazer mudanças;</li>
+                                    <li class="fragment">Desenvolver funcionalidades em paralelo.</li>
+                                </ul>
+                        </section>
+
+                        <section>
+                            <h2>Compartilhar projetos</h2><br/>
+                            <p class="fragment">Desenvolver projetos colaborativos nem sempre é fácil. Utilizar
+                                DropBox, Google Drive e pen drives pode gerar problemas.
+                            <br><br>
+                            <img src="images/octocat/collabocats.png" 
+                                style="width: 597px; height: 320px;"></p>
+                        </section>
+
+                        <section>
+                            <h2>Compartilhar projetos...</h2><br/>
+                            <p class="fragment">As ferramentas citadas foram projetadas para fins genéricos, não oferecendo
+                                aspectos importantes para equipe de desenvolvimento.<br><br>
+                            <img src="images/octocat/benevocats.png" 
+                                style="width: 400px; height: 350px;"></p>
+                        </section>
+
+                        <section>
+                            <h2>Compartilhar projetos...</h2><br/>
+                            
+                            <div style="width: 500px; height:400px; position: absolute; left: 0px;">
+                                <h4><b class="fragment"> O GIT ajuda solucionar:</b></h4>
+                                    <ul>
+                                        <ul>
+                                            <li class="fragment">Histórico de ações;</li>
+                                            <li class="fragment">Consistência entre as versões;</li>
+                                            <li class="fragment">Indentificação de bugs;</li>
+                                            <li class="fragment">Desfazer alterações prejudiais.</li>
+                                        </ul>
+                                    </ul>
+                            </div>
+
+                            <div style="width: 500px; height:400px; position: absolute; right: 0px;">
+                                <img src="images/octocat/daftpunktocat-guy.gif" 
+                                style="width: 400px; height: 300px;">
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2>Independe da plataforma</h2>
+                            <p></p>
+                            <br>
+                            <img class="fragment" src="images/logos/windows_logo.png"
+                                style="width: 180px; height: 180px;">
+                            <img class="fragment" align=right src="images/logos/linux_logo.png"
+                                style="width: 197px; height: 219px;">
+                            <img class="fragment" align=left src="images/logos/apple_logo.png"
+                                style="width: 165px; height: 200px;">
+                        </section>
+
+                        <section>
+                            <h2>O mercado utiliza</h2><br/>
+                            <p>Desenvolvimento profissional de projetos</p><br/>
+                            <img src="images/uso_de_um_controle_de_versao.jpg"
+                                style="width: 700px; height: 400px; border: 1px solid #000000;">
+                            <p><b> <a href="http://pt.slideshare.net/ZeroTurnaround/developer-productivityreport2013graphics-26271695" target="_blank">Rebellabs</b></a></p>
+                        </section>
+                        <section>
+                            <h2>O mercado utiliza...</h2><br/>
+                            <p>E o Git está entre os mais populares.</p><br/>
+                            <img src="images/git_vs_subversion.png"
+                                style="width: 750px; height: 445px; border: 1px solid #000000;;">
+                            <p><b> <a href="http://pt.slideshare.net/ZeroTurnaround/developer-productivityreport2013graphics-26271695" target="_blank">Rebellabs</b></a></p>
+                        </section>
+
+                        <section>
+                            <h2>Quem usa Git?</h2><br/>
+                            <img src="images/quem_usa_git.png" style="width: 926px; height: 171px; border: 1px solid #000000;">
+                            <p><b><a href="http://git-scm.com/" target="_blank">git-scm.com</b></a></p>
+                        </section>
+
+                        <section>
+                            <h3>Vagas de emprego</h3><br>
+
+                            <div style="width: 610px; height:100px;">
+                                <img src="images/vaga_apple.png"
+                                    style="width: 602px; height: 30px; border: 1px solid #000000;">
+                                <p>
+                                    <b><a href="https://jobs.apple.com/us/search?job=35817618&openJobId=35817618&board_id=39968#&openJobId=35817618" target="_blank">Apple</b></a>
+                                </p>
+                            </div>
+
+                            <div style="width: 650px; height:100px; float: right;">
+                                <img src="images/vaga_blizzard.png"
+                                    style="width: 647px; height: 33px; border: 1px solid #000000;">
+                                <p>
+                                    <b><a href="http://us.blizzard.com/pt-br/company/careers/posting.html?id=14000J4" target="_blank">Blizzard</b></a>
+                                </p>
+                            </div>
+
+                            <div style="width: 620px; height:100px;">
+                                <img src="images/vaga_android.png"
+                                    style="width: 610px; height: 36px; border: 1px solid #000000;">
+                                <p>
+                                    <b><a href="https://www.google.com/about/careers/search#!t=jo&jid=40055001&" target="_blank">Android/Google</b></a>
+                                </p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3>Mais Vagas?</h3><br>
+
+                            <p><b><a href="https://github.com/frontendbr/vagas/issues" target="_blank">Front-end</b></a></p><br/>
+
+                            <p><b><a href="https://github.com/backend-br/vagas/issues" target="_blank">Back-End</b></a></p>
+
+                            <p><b><a href="https://www.linkedin.com/jobs/search/?keywords=git" target="_blank">Vagas Linkedin</b></a></p>
+                            
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Como o Git funciona?</h2>
+                        </section>
+
+                        <section>
+                            <h2>Armazenamento</h2><br/>
+                            <h5>Baseado em Snapshots e não em lista de alterações</h5>
+                            <br/>
+                            <div style="width: 500px; height:300px; position: absolute; left: 0px;">
+                                <img align=center src="images/list_of_file_based_changes.png"
+                                    style="width: 400px; height: 180px; border:none;">
+                                <p>SCV convencionais</p>
+                            </div>
+                            <div style="width: 500px; height:300px; position: absolute; right: 0px;">
+                                <img align=center src="images/snapshots.png"
+                                    style="width: 400px; height: 180x; border:none;">
+                                <p>Git</p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2>SCV Distribuído</h2><br/>
+                            <p>Todos os clientes possuem uma cópia completa do repositório remoto.</p><br/>
+                            <div style="width: 460px; height:300px; position: absolute; left: 0px;">
+                                <p align=center><b>Centralizado</b></p>
+                                <img align=center src="images/centralized_vcs.png"
+                                    style="width: 315px; height: 253px; border:none;"><br/><br/>
+                                <p><b>Fonte: <a href="http://slides.com/borjagorrizhernando/git-in-context#/" target="_blank">Borja Gorriz Hernando</b></a></p>
+                            </div>
+                            <div style="width: 460px; height:300px; position: absolute; right: 0px;">
+                                <p align=center><b>Distribuído</b></p>
+                                <img align=center src="images/distributed_vcs.png"
+                                    style="width: 457px; height: 253px; border:none;"><br/><br/>
+                                <p><b>Fonte: <a href="http://slides.com/borjagorrizhernando/git-in-context#/" target="_blank">Borja Gorriz Hernando</b></a></p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2>Fluxo de trabalho</h2><br/>
+                            <img align=center src="images/git-local-remote.png"
+                                style="width: 696px; height: 571px; border:none;">
+                        </section>
+                    </section>
+
+                    <section>
+                        <h2>Antes de começarmos...</h2>
+                        <br/>
+                        <h3>Instale o <a href="http://git-scm.com/downloads" target="_blank">Git</a></h3>
+                        <br/>
+                        <h3>Cadastre-se no <a href="https://github.com/join" target="_blank">GitHub</a></h3>
+                    </section>
+
+                    <section>
+                        <h2>Para usuários Linux...</h2>
+                        <br/>
+                        <p>Para Debian/Ubuntu</p>
+                        <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">apt-get install git</p></pre><br/>
+                        <p>Para Fedora</p>
+                        <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">dnf install git</p></pre>
+                    </section>
+
+                    <section>
+                        <h2>Para usuários Windows...</h2>
+                        <br/>
+                        <h4>Acesso o link <a href="http://git-scm.com/downloads" target="_blank">Download Git</a></h4>
+                        <br/>
+                        <h4><u>Next</u> até finalizar a instalação</h4>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Vamos à prática!</h2>
+                            <img align=center src="images/octocat/ironcat.jpg"
+                                style="width: 537px; height: 537px;">
+                        </section>
+
+                        <section>
+                            <h2>Consultas rápidas</h2><br>
+                            <p>Caso não se lembre de algum comando ou queira uma explicação...</p><br>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git help</p></pre>
+                            <p>ou</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">man git</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Configurando o ambiente</h2><br>
+                            <p>Identificação:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git config --global user.name "Nome"<br>git config --global user.email email</p></pre><br>
+                            <p>Editor:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git config --global core.editor editor</p></pre><br>
+                            <p>Verificar configurações atuais:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git config --list</p></pre>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Trabalhando localmente</h2>
+                        </section>
+
+                        <section>
+                            <h2>Iniciando um projeto</h2><br>
+                            <p align="justify">Para iniciar um repositório Git:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git init</p></pre><br>
+                            <p align="justify">Este comando cria toda a estrutura que o Git necessita para funcionar. Os arquivos são criador na pasta oculta .git/</p><br>
+                            <h3><b><u>Tudo pronto para desenvolver!</u></b></h3>
+                        </section>
+
+                        <section>
+                            <h2>Ciclo de Vida</h2><br>
+                            <p>Possíveis status dos arquivos</p><br>
+                            <img align=center src="images/lifecycle.png"
+                                style="width: 800px; height: 330px;">
+                        </section>
+
+                        <section>
+                            <h2>Verificando o projeto</h2><br>
+                            <p align="justify">Verificando o status atual:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git status</p></pre><br>
+                            <p>Esse comando também exibe as alterações ocorridas no repositório desde o último commit.</p>
+                        </section>
+
+                        <section>
+                            <h2>Adicionando arquivos</h2><br>
+                            <p align="justify">O <i>git add</i> adiciona ou atualiza um arquivo da <i>staging area</i>.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git add arquivo<br>git add diretório<br>git add *</p></pre><br>
+                            <p>O comando informa ao Git para rastrear o referido arquivo. Caso
+                            o arquivo já esteja sob controle do Git, ele o atualiza.</p>
+                        </section>
+
+                        <section>
+                            <h2>Confirmando mudanças</h2><br>
+                            <p align="justify">O <i>git commit</i> transfere o estado do projeto salvo na <i>staging area</i> para o repositório do projeto.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git commit<br>git commit -m "descrição do commit"<br>git commit -am "descrição do commit"</p></pre><br>                            
+                            <p>Simplificando, ele confirma as suas modificações, criando um novo estado ou "ponto de referência" para o seu projeto. Todo commit é associado à um <i>checksum</i> para poder ser
+                            referenciado posteriormente.</p>
+                        </section>
+
+                        <section>
+                            <h2>Esqueci um arquivo...</h2><br>
+                            <p align="justify">O parâmetro <i>--amend </i>com o <i>git commit</i> permite que o mesmo commit seja refeito.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git commit -m "Descrição"<br>git add <arquivo esquecido><br>git commit --amend</p></pre><br>                            
+                        </section>
+
+                        <section>
+                            <p>Todo <i>commit</i> <b>DEVE</b> possuir uma mensagem de identificação, usada para descrever as alterações do <i>commit</i>. Por favor, usem-a</p><br>
+                            <p><b>Exemplo de como não se fazer um <i>commit</i>.</b></p><br>
+                            <img src="images/mensagens_intuitivas.jpg"
+                                style="width: 528px; height: 484px; border: 1px solid #000000;">
+                                <p><b align=right>Fonte</b>: Sem link preciso xD.</p>
+                        </section>
+
+                        <section>
+                            <h2>Comparando alterações</h2><br>
+                            <p align="justify">O <i>git diff</i> informa exatamente "o que" foi alterado</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git diff<br>git diff arquivo<br>git diff id_commit<br>git diff id_commit id_commit</p></pre><br>
+                            <p>O comando <i>git diff</i> compara o estado do repositório atualmente com o estado salvo na staging area</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git diff --cached</p></pre><br>
+                            <p>O comando <i>git diff --cached</i> compara o estado do repositório salvo na staging area com o estado do último commit</p>
+                        </section>
+
+                        <section>
+                            <h2>Histórico de alterações</h2><br>
+                            <p align="justify">O comando <i>git log</i> exibe o histórico de commits do projeto</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git log<br>git log --oneline<br>git log -p<br>git log --graph</p></pre>
+                            <br><p>A opção -p mostra o diff introduzido em cada commit. Usando -2 limita a saída somente às duas últimas entradas.</p>
+                        </section>
+
+                        <section>
+                            <h2>Visualizar alterações linha por linha</h2><br>
+                            <p align="justify">O comando <i>git blame</i> exibe as alterações feitas cada linha do arquivo.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git blame arquivo<br>git blame -L linha1,linha2 arquivo</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>"NAVEGANDO" pelo projeto</h2><br>
+                            <p>A partir do código associado aos commits você pode voltar
+                            para um determinado 'estado' do projeto</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git checkout id_commit</p></pre>
+                            <img src="images/checkout_commit.png" style="width: 460px; height: 237px;"><br>
+                            <p>O comando <i>git checkout</i> também redireciona arquivos e <i>branches</i></p>
+                        </section>
+
+                        <section>
+                            <h2>Desfazendo alterações</h2><br>
+                            <h4 class="fragment">Se eu me arrepender das minhas últimas alterações???</h4><br>
+                            <p class="fragment">Você pode descartar mudanças no seu <i>working directory</i> voltando o estado
+                            dos seus arquivos para o último salvo na staging area.</p>
+                            <pre class="fragment" style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git checkout arquivo<br>git checkout .</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Desfazendo alterações...</h2><br>
+                            <h4 class="fragment">E se eu já adicionei as alterações na staging area???</h4><br>
+                            <p class="fragment">O comando <i>git reset HEAD</i> devolve as modificações da staging area para o working directory.</p>
+                            <pre class="fragment" style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git reset HEAD arquivo<br>git reset HEAD .</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Desfazendo alterações...</h2><br>
+                            <h4 class="fragment">E se eu já <i>commitei</i> minhas alterações??</h4><br>
+                            <p class="fragment">Há duas maneiras diferentes de se fazer isto,
+                            você irá escolher uma ou outra dependendo do resultado que você espera</p>
+                        </section>
+
+                        <section>
+                            <h2>Desfazendo alterções...</h2><br>
+                            <p>O comando <i>git reset</i> faz o projeto/arquivo voltar para um
+                            estado anterior.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git reset id_commit<br>git reset arquivo<br>git reset --hard id_commit</p></pre>
+                            <img src="images/reset.png" style="width: 419px; height: 107px;">
+                        </section>
+
+                        <section>
+                            <h2><strike>Desfazendo</strike> Revertendo alterações</h2><br>
+                            <p>O comando <i>git revert</i> não desfaz um commit, mas cria outro
+                            removendo a alteração anterior.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git revert id_commit</p></pre>
+                            <img src="images/revert.png" style="width: 409px; height: 116px;">
+                        </section>
+
+                        <section>
+                            <h2>Removendo arquivos</h2><br>
+                            <p align="justify">O comando <i>git rm</i> remove um arquivo do seu projeto.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git rm arquivo<br>git rm --cached arquivo</p></pre><br>
+                            <p>A opção --cached remove o arquivo apenas do Git, sem esta opção
+                            o comando remove o arquivo do seu computador também.</p>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Ramificando a produção</h2><br>
+                            <img src="images/branches.png" style="width: 719px; height: 231px;">
+                        </section>
+
+                        <section>
+                            <h2>Ramificando a produção...</h2><br>
+                            <p>O Git permite criar uma linha independente de desenvolvimento
+                            no seu projeto. Isto permite alterações em partes especificas do software
+                            sem comprometer o restante do projeto.</p>
+                            <img src="images/branch_example.png" style="width: 546px; height: 326px;">
+                        </section>
+
+                        <section>
+                            <h2>Ramificando a produção...</h2><br>
+                            <p align="justify">O comando <i>git branch</i> cria um novo branch a partir do último commit.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git branch nome_branch</p></pre>
+                            <img src="images/after_branch.png" style="width: 504px; height: 332px;">
+                        </section>
+
+                        <section>
+                            <h2>Navegando entre branches</h2><br>
+                            <p>Além de visualizar commits antigos, o <i>git checkout</i>
+                            também é o responsável por <u>alterar o branch corrente</u>.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git checkout nome_branch</p></pre>
+                            <img align=left src="images/before_checkout_branch.png" style="width: 477px; height: 396px;">
+                            <img align=right src="images/after_checkout_branch.png" style="width: 477px; height: 396px;">
+                        </section>
+
+                        <section>
+                            <h2>Unindo ramificações</h2><br>
+                            <p>Após desenvolvedor uma funcionalidade separada do fluxo principal, muitas
+                            vezes é interessante incorporar as modificações no branch master.
+                            O comando <i>git merge</i> uni dois branches novamente, combinando
+                            as funcionalidades do branch independente com o branch atual.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git merge nome_branch</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Deletando ramificações</h2><br>
+                            <p>Após incorporar um <i>branch</i> à outro, pode não
+                            ser mais necessário manter uma ramificação. Para deletar um branch
+                            utiliza-se do parâmetro -d juntamente com o comando <i>git branch</i></p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git branch -d nome_branch</p></pre>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Repositórios remotos</h2><br>
+                            <img src="images/octocat/socialite.png" style="width: 597px; height: 300px;">
+                        </section>
+
+                        <section>
+                            <h2>Trabalhando com repositórios remotos...</h2><br>
+                            <p class="fragment">
+                                "Muitas vezes" não desenvolvemos projetos
+                                sozinhos.
+                            </p><br>
+                            <p class="fragment">   
+                                Normalmente um repositório remoto possui sempre a versão mais atualizada
+                                dentre os integrantes.
+                            </p><br>
+                            <p class="fragment">
+                                Permite desenvolver e acompanhar o desenvolvimento
+                                de várias funcionalidade ao mesmo tempo.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2>Trabalhando com repositórios remotos...</h2><br>
+                            <p class="fragment">
+                                Muitas empresas possuem servidores dedicados para suas equipes,
+                                mas há algumas soluções que cumprem a mesma função.
+                            </p><br>
+                            <img class="fragment" align=left src="images/logos/bitbucket_logo.png" style="width: 434px; height: 125px;">
+                            <img class="fragment" align=right src="images/logos/gitlab_logo.png" style="width: 360px; height: 120px;">
+                        </section>
+
+                        <section>
+                            <h2>Trabalhando com repositórios remotos...</h2><br>
+                            <p>Mas daremos foco ao case mais bem sucedido.</p><br>
+                            <div style="width: 900px; height:900px;">
+                                <img align=left src="images/logos/github-icon.png" style="width: 130px; height: 130px;">
+                                <img align=right src="images/octocat/original.png" style="width: 200px; height: 200px;">
+                                <img align=center src="images/logos/GitHub-logo.png" style="width: 500px; height: 205px;">
+                            </div>
+                        </section>
+
+                        <section>
+                            <h2>Referenciando um repositório remoto</h2><br>
+                            <p>O comando <i>git remote add</i> é o responsável por referenciar um repositório remoto em um repositório local já existente</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git remote add origin URL</p></pre><br>
+                            <p>O comando <i>git remote rm</i> é utilizado para apagar uma referência à um repositório remoto. Usado para substituir o local onde o remoto está.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git remote rm origin</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Copiando um repositório remoto para seu pc</h2><br>
+                            <p>Quando se deseja iniciar/continuar um projeto já existente, utiliza-se do
+                            <i>git clone</i> para copiar <b>todo um repositório remoto</b> para uma máquina local, seja sua ou não.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git clone URL</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Enviando conteúdo para o repositório remoto</h2><br>
+                            <p>Utiliza-se o <i>git push</i> para enviar as modificações para o repositório.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git push<br>git push origin master<br>git push origin nome_branch</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Baixando atualizações do repositório remoto</h2><br>
+                            <p>O comando <i>git fetch</i> baixa as atualizações mas não as incorpora ao repositório local.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git fetch<br>git fetch origin master<br>git fetch origin nome_branch</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Baixando atualizações do repositório remoto...</h2><br>
+                            <p>Utilizando o comando <i>git pull</i>, que baixa e
+                            incorpora as modificações no repositório local. Equivale à um <i>git fetch</i> seguido de uma <i>git merge</i>.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git pull<br>git pull origin master<br>git pull origin nome_branch</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Criando versões</h2><br>
+                            <p>Conforme incluímos funcionalidades no sistema, podemos definir pontos relevantes
+                            no software, que geralmente, marcam uma versão.</p><br>
+                            <p>O comando <i>git tag</i> inclui um rótulo à um determinado commit para
+                            que este possa ser referenciado mais facilmente.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git tag -a versao -m "descrição"</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Criando versões...</h2><br>
+                            <p>Para vizualizar utilize o comando <i>git tag</i> sem parâmetros.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git tag</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Criando versões...</h2><br>
+                            <p>Para visualizar o conteúdo de uma versão lançada, utilize o comando <i>git checkout</i> usando o nome da tag.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git checkout nome_tag</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Criando versões...</h2><br>
+                            <p>Para enviar os rótulos criados para o repositório remoto, utilize o parâmetro --tags no comando <i>git push</i>.</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git push origin --tags</p></pre>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Extras?</h2>                            
+                        </section>
+
+                        <section>
+                            <h2>HTML?</h2><br/>
+                            <p class="fragment">HyperText Mark-up Language;</p>
+                            <br/>
+                            <p class="fragment">Criada por <u>Tim Berners-Lee</u> em 1990</p>
+                            <br/>
+                            <p class="fragment">Linguagem de Marcação</u>;</p>
+                            <br/>
+                            <p class="fragment">Navegador interpreta e exibe o conteúdo;</p>
+                            <br/>
+                            <p class="fragment">Composta por tags;</p>                           
+                        </section>
+
+                        <section>
+                            <h2>CSS?</h2><br/>
+                            <p class="fragment">Criada por <u>Hakon Wium Lie,</u> em 1994</p>
+                            <br/>
+                            <p class="fragment">Cascading Style Sheets</u>;</p>
+                            <br/>
+                            <p class="fragment">CSS nível 1 em 1996, reconhecido pela W3C.</p>
+                            <br/>
+                            <p class="fragment">Facilita o desenvolvimento;</p>
+                        </section>
+
+                        <section>
+                            <h2>GH-Pages</h2><br/>
+                            <p class="fragment">Torna seu github uma hospedagem;</p>
+                            <br/>
+                            <p class="fragment">Ofere um domínio próprio, parcialmente personalizado;</p>
+                            <br/>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Dicas úteis</h2>                            
+                        </section>
+
+                        <section>
+                            <h2>Algumas configurações</h2><br>
+                            <p>Configuração da Interface gráfica:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">gitk</p></pre><br>
+                            <p>Usar saídas coloridas:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git config color.iu true</p></pre><br>
+                            <p>Exibir log em apenas uma linha por commit:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git config format.pretty oneline</p></pre>
+                        </section>
+
+                        <section>
+                            <h2>Comandos Não Frequentes, mas úteis...</h2><br>
+                            <p>Configuração de Proxy:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git config --global http.proxy http://proxy_de_saida:porta_de_saida</p></pre><br>
+                            <p>Remover configuração de Proxy:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git config --global --unset http.proxy</p></pre><br>
+                            <p>Tirar o estado sujo do seu diretório de trabalho:</p>
+                            <pre style="background-color: #4C4C4C;"><p style="color: white; font-size: 150%;">git stash</p></pre>
+                        </section>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h2>Material de apoio</h2>
+                        </section>
+
+                        <section>
+                            <h2>Conteúdo sob <i>Copyleft</i></h2><br>
+                            <p><a href="https://git-scm.com/book/en/v2" target="_blank"><b>Livro Comunidade - Pro Git</b></a></p>
+                            <p><a href="http://think-like-a-git.net/" target="_blank"><b>Pense como um Git</b></a></p>
+                            <p><a href="http://marklodato.github.io/visual-git-guide/index-en.html"><b>Guia visual Git</b></a></p>
+                        </section>
+
+                        <section>
+                            <h2>Conteúdo sob <i>Copyright</i></h2><br>
+                            <p><a href="https://www.casadocodigo.com.br/products/livro-git-github" target="_blank"><b>Controlando versões com Git e GitHub</b></a></p>
+                            <p><a href="http://shop.oreilly.com/product/0636920024972.do" target="_blank"><b>Git Pocket Guide</b></a></p>
+                        </section>
+
+                    </section>
+                    
+                    <section id="referencias">
+                        <h2>Referências</h2><br>
+                        <p><b><a href="https://octodex.github.com/" target="_blank">Octodex</b></a></p>
+                        <p><b><a href="https://www.atlassian.com/git/tutorials/" target="_blank">Atlassian</b></a></p>
+                        <p><b><a href="http://git-scm.com/doc" target="_blank">Git - Site Oficial</b></a></p>
+                        <p><b><a href="http://slides.com/borjagorrizhernando/git-in-context#/" target="_blank">Borja Gorriz Hernando</b></a></p>
+                    </section>
+
+                </div>
+
+            </div>
+
+            <script src="lib/js/head.min.js"></script>
+            <script src="js/reveal.min.js"></script>
+
+            <script>
+
+                Reveal.initialize({
+                    controls: true,
+                    progress: true,
+                    history: true,
+                    center: true,
+
+                    theme: Reveal.getQueryHash().theme || 'custom' , // available themes are in /css/theme
+                    transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+                    slideNumber: Reveal.getQueryHash().slideNumber || 'true',
+
+                    dependencies: [
+                        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    ]
+                });
+
+            </script>
+
+        </body>
+    </html>
